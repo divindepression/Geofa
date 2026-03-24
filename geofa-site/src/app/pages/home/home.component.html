@@ -1,0 +1,95 @@
+
+
+<!-- Section Actualités GEOFA (sobre) -->
+<section class="py-20 px-4 bg-white">
+  <h2 class="text-3xl font-bold text-center text-blue-700 mb-12 animate-fadeInUp">Actualités GEOFA</h2>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <ng-container *ngFor="let news of newsList; let i = index">
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col animate-fadeInUp" [ngClass]="{'delay-100': i === 1, 'delay-200': i === 2}">
+        <img *ngIf="news.image" [src]="news.image" [alt]="news.title" class="w-full h-48 object-cover rounded-lg mb-4" />
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">{{ news.date | date:'dd/MM/yyyy' }}</span>
+        </div>
+        <h3 class="text-lg font-bold text-gray-800 mb-2">{{ news.title }}</h3>
+        <p class="text-gray-700 flex-1">{{ news.summary }}</p>
+        <a *ngIf="news.link" [href]="news.link" target="_blank" class="mt-4 inline-block text-blue-700 font-semibold hover:underline">Lire plus</a>
+      </div>
+    </ng-container>
+    <div *ngIf="newsList.length === 0" class="col-span-3 text-center text-gray-400 italic">Aucune actualité pour le moment.</div>
+  </div>
+</section>
+
+
+<!-- Animations CSS (à placer dans le SCSS global ou local) -->
+<style>
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 1s cubic-bezier(.4,0,.2,1) both; }
+.animate-fadeInUp.delay-100 { animation-delay: .1s; }
+.animate-fadeInUp.delay-200 { animation-delay: .2s; }
+.animate-fadeInUp.delay-300 { animation-delay: .3s; }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.animate-fadeIn { animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both; }
+@keyframes zoomIn {
+  0% { opacity: 0; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-zoomIn { animation: zoomIn 1.2s cubic-bezier(.4,0,.2,1) both; }
+</style>
+<!-- Hero section avec image de fond, overlay et animation -->
+<section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+  <img src="/assets/images/IMG-20260323-WA0142.jpg" alt="GEOFA Hero" class="absolute inset-0 w-full h-full object-cover object-center scale-105 blur-[2px] brightness-75 animate-zoomIn" style="z-index:1;" />
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-blue-600/60" style="z-index:2;"></div>
+  <div class="relative z-10 text-center text-white animate-fadeInUp">
+    <h1 class="text-5xl md:text-6xl font-extrabold drop-shadow-lg tracking-tight mb-4 animate-fadeInUp">GÉO FAMILLE</h1>
+    <p class="text-2xl md:text-3xl font-medium mb-6 animate-fadeInUp delay-100">Unis par le Savoir, liés par la solidarité</p>
+    <p class="max-w-2xl mx-auto text-lg md:text-xl mb-8 animate-fadeInUp delay-200">
+      Une communauté d’anciens étudiants en géologie engagés pour le développement, la solidarité et l’excellence professionnelle.
+    </p>
+    <div class="flex flex-col md:flex-row gap-4 justify-center animate-fadeInUp delay-300">
+      <a routerLink="/contact" class="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold shadow-lg hover:bg-blue-100 transition">Nous rejoindre</a>
+      <a routerLink="/a-propos" class="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition">En savoir plus</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section À propos rapide avec image et animation -->
+<section class="py-16 px-4 bg-white text-gray-800 text-center">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 animate-fadeIn">
+    <img src="/assets/images/IMG-20260323-WA0137.jpg" alt="GEOFA groupe" class="w-full md:w-1/2 rounded-2xl shadow-lg object-cover object-center mb-8 md:mb-0 animate-zoomIn" style="max-height:340px;" />
+    <div class="flex-1">
+      <h2 class="text-3xl font-bold mb-4 text-blue-700">Qui sommes-nous ?</h2>
+      <p class="max-w-xl mx-auto text-lg">
+        GEOFA est une association d’anciens étudiants en géologie de l’Université Marien NGOUABI, réunis autour de valeurs de solidarité, d’entraide, de développement personnel et de partage du savoir.<br>
+        <span class="font-semibold text-blue-700">Notre mission :</span> créer un réseau dynamique pour soutenir, former et accompagner chaque membre dans son parcours professionnel et personnel.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Section Nos piliers avec animation et images -->
+<section class="py-20 px-4 bg-gradient-to-br from-blue-50 to-blue-100">
+  <h2 class="text-3xl font-bold text-center text-blue-700 mb-12 animate-fadeInUp">Nos piliers</h2>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="bg-white rounded-2xl shadow-xl p-10 flex flex-col items-center group hover:scale-105 hover:shadow-2xl transition duration-300 animate-fadeInUp">
+      <img src="/assets/images/IMG-20260323-WA0147.jpg" alt="Solidarité" class="w-24 h-24 object-cover rounded-full border-4 border-blue-200 mb-4 group-hover:scale-110 transition" />
+      <h3 class="text-xl font-bold mb-2 text-blue-700">Solidarité</h3>
+      <p class="text-gray-600">Soutien mutuel lors des événements sociaux, entraide et accompagnement dans les moments clés de la vie.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-xl p-10 flex flex-col items-center group hover:scale-105 hover:shadow-2xl transition duration-300 animate-fadeInUp delay-100">
+      <img src="/assets/images/IMG-20260323-WA0148.jpg" alt="Développement" class="w-24 h-24 object-cover rounded-full border-4 border-blue-200 mb-4 group-hover:scale-110 transition" />
+      <h3 class="text-xl font-bold mb-2 text-blue-700">Développement</h3>
+      <p class="text-gray-600">Formations, mentorat, conférences et initiatives pour favoriser l’épanouissement personnel et professionnel.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-xl p-10 flex flex-col items-center group hover:scale-105 hover:shadow-2xl transition duration-300 animate-fadeInUp delay-200">
+      <img src="/assets/images/IMG-20260323-WA0149.jpg" alt="Réseau" class="w-24 h-24 object-cover rounded-full border-4 border-blue-200 mb-4 group-hover:scale-110 transition" />
+      <h3 class="text-xl font-bold mb-2 text-blue-700">Réseau</h3>
+      <p class="text-gray-600">Un réseau intergénérationnel pour partager les opportunités, expériences et renforcer les liens entre membres.</p>
+    </div>
+  </div>
+</section>
